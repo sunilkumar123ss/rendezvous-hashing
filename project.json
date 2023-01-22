@@ -1,0 +1,8 @@
+{
+  "slug": "rendezvous-hashing",
+  "title": "Rendezvous hashing",
+  "description": "Choose stable primary and replica candidates by ranking node-specific hashes.",
+  "category": "systems",
+  "demo_args": [],
+  "expected_exit": 0
+}
