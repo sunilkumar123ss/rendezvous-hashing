@@ -14,6 +14,9 @@ class RendezvousTests(unittest.TestCase):
         b = m.Rendezvous(['c', 'b', 'a'])
         self.assertEqual(a.rank('x', 3), b.rank('x', 3))
 
+    def test_replicas_are_unique(self):
+        r = m.Rendezvous(['a', 'b', 'c'])
+        self.assertEqual(set(r.rank('x', 3)), {'a', 'b', 'c'})
 
 
 
