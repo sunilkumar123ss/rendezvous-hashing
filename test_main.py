@@ -18,6 +18,12 @@ class RendezvousTests(unittest.TestCase):
         r = m.Rendezvous(['a', 'b', 'c'])
         self.assertEqual(set(r.rank('x', 3)), {'a', 'b', 'c'})
 
+    def test_add_moves_only_to_new_member(self):
+        a = m.Rendezvous(['a', 'b'])
+        b = m.Rendezvous(['a', 'b', 'c'])
+        for key in map(str, range(500)):
+            if a.rank(key) != b.rank(key):
+                self.assertEqual(b.rank(key), ['c'])
 
 
 
