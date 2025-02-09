@@ -25,6 +25,11 @@ class RendezvousTests(unittest.TestCase):
             if a.rank(key) != b.rank(key):
                 self.assertEqual(b.rank(key), ['c'])
 
+    def test_removal_preserves_relative_ranking(self):
+        a = m.Rendezvous(['a', 'b', 'c'])
+        b = m.Rendezvous(['a', 'c'])
+        for key in map(str, range(100)):
+            self.assertEqual([n for n in a.rank(key, 3) if n != 'b'], b.rank(key, 2))
 
 
 if __name__ == '__main__':
