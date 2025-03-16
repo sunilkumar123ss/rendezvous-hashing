@@ -31,6 +31,13 @@ class RendezvousTests(unittest.TestCase):
         for key in map(str, range(100)):
             self.assertEqual([n for n in a.rank(key, 3) if n != 'b'], b.rank(key, 2))
 
+    def test_invalid_count_and_nodes(self):
+        with self.assertRaises(ValueError):
+            m.Rendezvous(['a', 'a'])
+        with self.assertRaises(ValueError):
+            m.Rendezvous(['a']).rank('x', 2)
+        with self.assertRaises(ValueError):
+            m.Rendezvous([]).rank('x')
 
 if __name__ == '__main__':
     unittest.main()
