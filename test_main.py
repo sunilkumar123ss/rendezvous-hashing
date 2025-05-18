@@ -39,5 +39,7 @@ class RendezvousTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             m.Rendezvous([]).rank('x')
 
+    def test_single_node(self):
+        self.assertEqual(m.Rendezvous(['a']).rank('anything'), ['a'])
 if __name__ == '__main__':
     unittest.main()
